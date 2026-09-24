@@ -1,0 +1,325 @@
+/* ==========================================================================
+   RESPONSIVE LAYOUT & TOUCH MOBILE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+    .header-container { max-width: 1400px; }
+    .gallery-grid-container { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Tablets & Small Laptops (900px to 1200px) */
+@media (max-width: 1100px) {
+    .admin-dashboard-layout {
+        flex-direction: column;
+        height: 96vh;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+        padding: 12px 16px;
+    }
+
+    .admin-sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .admin-nav-item {
+        white-space: nowrap;
+    }
+}
+
+/* Mobile Devices (Under 900px) */
+@media (max-width: 900px) {
+    .site-nav { display: none; }
+    .nav-toggle-btn { display: flex; }
+
+    .timeline-container::before { left: 24px; }
+    .timeline-card {
+        width: 100%;
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+    .timeline-card.left .timeline-badge,
+    .timeline-card.right .timeline-badge {
+        left: 4px;
+        right: auto;
+    }
+
+    .pin-digit-input {
+        width: 48px;
+        height: 56px;
+        font-size: 1.6rem;
+    }
+
+    /* Long gallery and video scenes must not wait for a large viewport intersection. */
+    .experience-scene {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Small Mobile Phones (Under 600px) */
+@media (max-width: 600px) {
+    .experience-scene { padding: 80px 16px 50px 16px; }
+    .glass-card { padding: 18px; }
+    .photo-wrapper { height: 180px; }
+    
+    .candles-row { gap: 12px; }
+    .layer-top { width: 140px; }
+    .layer-middle { width: 190px; }
+    .layer-bottom { width: 240px; }
+    .cake-plate { width: 270px; }
+
+    .admin-top-toolbar {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .pin-inputs-container { gap: 10px; }
+}
+
+/* Touch Target Minimum (44px) */
+button, a, input, select, textarea {
+    min-height: 44px;
+    touch-action: manipulation;
+}
+
+/* Responsive content sizing */
+@media (max-width: 1100px) {
+    .experience-scene {
+        padding-left: clamp(20px, 4vw, 48px);
+        padding-right: clamp(20px, 4vw, 48px);
+    }
+
+    .scene-title {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+    }
+
+    .gallery-grid-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .photo-wrapper {
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+@media (max-width: 900px) {
+    .site-header {
+        padding: 12px 16px;
+    }
+
+    .logo {
+        font-size: 1.05rem;
+    }
+
+    .header-controls {
+        gap: 6px;
+    }
+
+    .experience-scene {
+        min-height: auto;
+        padding-top: 96px;
+        padding-bottom: 64px;
+    }
+
+    .scene-heading-container {
+        margin-bottom: 28px;
+    }
+
+    .scene-subtitle {
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gallery-grid-container,
+    .video-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lightbox-content {
+        width: min(92vw, 760px);
+    }
+
+    .lightbox-img-wrapper img {
+        max-height: 70vh;
+    }
+
+    .lightbox-nav-btn.prev { left: 10px; }
+    .lightbox-nav-btn.next { right: 10px; }
+}
+
+@media (max-width: 600px) {
+    .header-controls .icon-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .mobile-drawer {
+        top: 64px;
+        padding: 18px 16px 22px;
+    }
+
+    .experience-scene {
+        padding: 88px 14px 52px;
+    }
+
+    .scene-tag {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+    }
+
+    .scene-title {
+        font-size: clamp(1.8rem, 9vw, 2.7rem);
+        overflow-wrap: anywhere;
+    }
+
+    .scene-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .gallery-grid-container,
+    .video-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .photo-card {
+        max-width: 420px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .photo-wrapper {
+        aspect-ratio: 4 / 3;
+    }
+
+    .photo-caption {
+        font-size: 1.2rem;
+    }
+
+    .video-player-card,
+    .video-lightbox-panel {
+        border-radius: var(--radius-md);
+    }
+
+    .video-custom-controls {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .video-custom-controls .icon-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .lightbox-modal,
+    .video-lightbox {
+        padding: 60px 12px 18px;
+    }
+
+    .lightbox-close-btn {
+        top: 12px;
+        right: 12px;
+    }
+
+    .lightbox-nav-btn {
+        top: auto;
+        bottom: 14px;
+        transform: none;
+    }
+
+    .lightbox-nav-btn.prev { left: 18px; }
+    .lightbox-nav-btn.next { right: 18px; }
+
+    .lightbox-content {
+        max-height: calc(100vh - 140px);
+    }
+
+    .lightbox-img-wrapper img {
+        max-height: 58vh;
+    }
+
+    .lightbox-caption-text {
+        font-size: 1.35rem;
+        padding: 0 52px;
+    }
+
+    .letter-paper-content {
+        padding: 26px 20px 24px;
+    }
+
+    .letter-salutation {
+        font-size: 1.9rem;
+    }
+
+    .letter-body p {
+        font-size: 1.35rem;
+        line-height: 1.45;
+    }
+
+    .letter-closing {
+        font-size: 1.55rem;
+    }
+
+    .letter-popup {
+        padding: 12px;
+    }
+
+    .letter-popup-panel {
+        max-height: 92vh;
+        overflow-y: auto;
+        padding: 12px 12px 14px;
+    }
+
+    .letter-popup-paper {
+        padding: 22px 18px 18px;
+    }
+
+    .letter-popup-content p {
+        font-size: 1.25rem;
+        line-height: 1.45;
+    }
+
+    .music-badge {
+        right: 12px;
+        bottom: 12px;
+        max-width: calc(100vw - 24px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        font-size: 0.9rem;
+        letter-spacing: 0;
+    }
+
+    .header-controls .icon-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .experience-scene {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .letter-body p {
+        font-size: 1.2rem;
+    }
+}

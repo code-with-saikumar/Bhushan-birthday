@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Naga Bhushan 🎉 | Interactive Experience Platform</title>
+    
+    <!-- SEO & OpenGraph Meta Tags -->
+    <meta name="description" content="A special interactive, cinematic birthday surprise experience created exclusively for Naga Bhushan.">
+    <meta property="og:title" content="Happy Birthday Naga Bhushan 🎉">
+    <meta property="og:description" content="An interactive digital journey and celebration platform created for Naga Bhushan!">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Canvas Background Overlays -->
+    <canvas id="bg-canvas" class="parallax-bg"></canvas>
+    <canvas id="celebration-canvas"></canvas>
+
+    <!-- Ambient Cursor Elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring">
+        <span class="cursor-label" style="display: none;"></span>
+    </div>
+
+    <!-- Live Preview Mode Top Notification Bar -->
+    <div id="preview-mode-bar" class="preview-mode-bar">
+        <span>👁️ LIVE PREVIEW MODE (Displaying Live Unsaved Modifications)</span>
+        <button id="exit-preview-btn" class="secondary-btn" style="color: #fff; border-color: #fff; padding: 6px 18px; font-size: 0.85rem;">
+            ← Back to Dashboard
+        </button>
+    </div>
+
+    <!-- Hidden Subtle Admin Profile Icon (Top-Right Easter Egg) -->
+    <button id="admin-profile-trigger" class="hidden-admin-icon" aria-label="Admin Control Center" title="Admin Profile & CMS Center">
+        👤
+    </button>
+
+    <!-- Loading Screen -->
+    <div id="loader" role="dialog" aria-label="Loading Experience">
+        <div class="loader-content">
+            <h2 class="loader-title gradient-text-purple-pink">Preparing Something Special...</h2>
+            <div class="loader-bar-container">
+                <div id="loader-progress-fill" class="loader-bar-fill"></div>
+            </div>
+            <div class="loader-status-row">
+                <span id="loader-status">INITIALIZING SYSTEM...</span>
+                <span id="loader-progress-text">00%</span>
+            </div>
+            <button id="loader-start-btn" class="primary-btn">
+                ENTER NAGA BHUSHAN'S EXPERIENCE 🚀
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Site Header -->
+    <header class="site-header">
+        <div id="scroll-progress-bar"></div>
+        <div class="header-container">
+            <a href="#scene-01" class="logo gradient-text-purple-pink dynamic-name">NAGA BHUSHAN 🎉</a>
+            
+            <nav class="site-nav">
+                <a href="#scene-01" class="nav-link">HOME</a>
+                <a href="#scene-02" class="nav-link">PORTAL</a>
+                <a href="#scene-03" class="nav-link">GIFT</a>
+                <a href="#scene-04" class="nav-link">ANALYSIS 🤖</a>
+                <a href="#scene-05" class="nav-link">MEMORIES</a>
+                <a href="#scene-06" class="nav-link">VIDEO</a>
+                <a href="#scene-07" class="nav-link">LETTER</a>
+                <a href="#scene-08" class="nav-link">CAKE</a>
+                <a href="#scene-10" class="nav-link">WISHES</a>
+                <a href="#scene-12" class="nav-link">FINALE</a>
+            </nav>
+
+            <div class="header-controls">
+                <button id="music-toggle" class="icon-btn" aria-label="Toggle Music"><span class="icon">🎵</span></button>
+                <button id="sound-toggle" class="icon-btn" aria-label="Toggle Sound Effects"><span class="icon">🔊</span></button>
+                <button id="nav-toggle" class="icon-btn nav-toggle-btn" aria-label="Toggle Menu"><span class="icon">☰</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-drawer" class="mobile-drawer">
+        <a href="#scene-01" class="nav-link">HOME</a>
+        <a href="#scene-02" class="nav-link">PORTAL</a>
+        <a href="#scene-03" class="nav-link">GIFT</a>
+        <a href="#scene-04" class="nav-link">ANALYSIS ENGINE 🤖</a>
+        <a href="#scene-05" class="nav-link">MEMORY LANE</a>
+        <a href="#scene-06" class="nav-link">VIDEO MESSAGE</a>
+        <a href="#scene-07" class="nav-link">DIGITAL LETTER</a>
+        <a href="#scene-08" class="nav-link">BIRTHDAY CAKE</a>
+        <a href="#scene-10" class="nav-link">WISH WALL</a>
+        <a href="#scene-12" class="nav-link">GRAND FINALE</a>
+    </div>
+
+    <!-- Floating Music Badge -->
+    <div id="music-player-badge" class="music-badge">Birthday Mode: OFF 🔇</div>
+
+    <!-- Countdown Banner (If Configured) -->
+    <div id="countdown-banner"></div>
+
+    <!-- ==========================================================================
+         MAIN EXPERIENCE SCENES
+         ========================================================================== -->
+    <main>
+
+        <!-- SCENE 01: MYSTERIOUS WELCOME -->
+        <section id="scene-01" class="experience-scene scene-welcome">
+            <h1 class="intro-greeting gradient-text-purple-pink">HEY...</h1>
+            <p class="intro-sub">Someone's special day has entered the system...</p>
+
+            <div class="loading-terminal-box">
+                <div id="intro-loading-text">
+                    <div class="loading-line">[ SYSTEM INITIALIZING... ]</div>
+                    <div class="loading-line">[ MEMORIES FOUND... ]</div>
+                    <div class="loading-line">[ FRIENDSHIP DATABASE LOADED... ]</div>
+                    <div class="loading-line">[ SUBJECT IDENTIFIED... ]</div>
+                </div>
+            </div>
+
+            <div id="intro-subject-reveal" class="subject-reveal-container revealed">
+                <p class="scene-subtitle">SUBJECT IDENTIFIED:</p>
+                <h2 id="hero-main-title" class="subject-name neon-text-pink dynamic-name" title="Click 5 times for a secret surprise!">NAGA BHUSHAN</h2>
+                <p class="scene-subtitle">Are you ready for your birthday surprise?</p>
+
+                <button id="enter-chaos-btn" class="primary-btn">
+                    ENTER THE CHAOS 🚀
+                </button>
+                <p class="warning-line">Warning: excessive happiness and high-energy chaos ahead.</p>
+            </div>
+        </section>
+
+        <!-- SCENE 02: THE BIRTHDAY PORTAL -->
+        <section id="scene-02" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 02 — THE PORTAL</span>
+                <h2 class="scene-title gradient-text-purple-pink">Today Isn't Just Another Day...</h2>
+                <p class="scene-subtitle">It's YOUR DAY, <span class="dynamic-name">Naga Bhushan</span>! The cosmos has aligned.</p>
+            </div>
+
+            <div id="portal-wrapper" class="portal-wrapper">
+                <div class="portal-ring"></div>
+                <div class="portal-inner-content">
+                    <span style="font-size: 3.5rem;">👑</span>
+                    <h3 id="portal-name" class="neon-text-gold dynamic-name" style="font-size: 1.8rem; margin-top: 10px;">NAGA BHUSHAN</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">VIP BIRTHDAY ACCESS</p>
+                </div>
+            </div>
+
+            <button id="portal-start-btn" class="primary-btn">
+                LET THE CELEBRATION BEGIN 🎉
+            </button>
+
+            <div id="portal-suggestion-toast" class="portal-suggestion-toast">
+                CELEBRATION UNLOCKED! UNBOX YOUR SURPRISE BELOW 👇
+            </div>
+        </section>
+
+        <!-- SCENE 03: THE INTERACTIVE GIFT -->
+        <section id="scene-03" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 03 — UNBOXING</span>
+                <h2 class="scene-title gradient-text-cyan-blue">There's Something Inside...</h2>
+                <p class="scene-subtitle">A special delivery for <span class="dynamic-name">Naga Bhushan</span>. Move your mouse to inspect!</p>
+            </div>
+
+            <div class="gift-scene-container">
+                <div id="interactive-gift" class="gift-box-3d">
+                    <div class="gift-lid"></div>
+                    <div class="gift-body">
+                        <div class="gift-ribbon-v"></div>
+                        <div class="gift-ribbon-h"></div>
+                    </div>
+                </div>
+
+                <button id="open-gift-btn" class="primary-btn" style="margin-top: 20px;">
+                    OPEN IT 🎁
+                </button>
+
+                <div id="gift-result" class="glass-card gift-result-card">
+                    <!-- Revealed Gift Photo -->
+                    <div class="gift-photo-container">
+                        <div class="photo-card polaroid-tilt" style="max-width: 380px; margin: 0 auto 20px auto;">
+                            <div class="photo-wrapper">
+                                <img id="gift-revealed-photo-img" src="assets/photos/gift-photo.jpg" alt="Gift Revealed Photo" onerror="this.onerror=null; this.src='assets/photos/gift-photo.jpg';">
+                            </div>
+                            <div id="gift-photo-caption" class="photo-caption">A Special Moment For Naga Bhushan 📸</div>
+                        </div>
+                    </div>
+
+                    <!-- Plot Twist Age Message & Badges -->
+                    <h3 class="neon-text-pink" style="font-size: 2rem; font-weight: 800;">Plot twist...</h3>
+                    <h2 id="gift-age-text" class="gift-age-headline gradient-text-gold">You're officially 21 years old! 🎉</h2>
+                    
+                    <div class="stats-grid-mini">
+                        <div class="stat-item-mini"><label>Age</label><span>+1 🎂</span></div>
+                        <div class="stat-item-mini"><label>Wisdom</label><span>+0 🤔</span></div>
+                        <div class="stat-item-mini"><label>Problems</label><span>+10 🤪</span></div>
+                        <div class="stat-item-mini"><label>Friendship</label><span>+∞ ❤️</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 04: THE NAGA BHUSHAN ANALYSIS ENGINE -->
+        <section id="scene-04" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 04 — OFFICIAL PERSONALITY DIAGNOSTICS</span>
+                <h2 class="scene-title gradient-text-gold"><span class="dynamic-name">NAGA BHUSHAN</span> ANALYSIS ENGINE 🤖</h2>
+                <p class="scene-subtitle">Running official birthday personality diag — Verified Multi-Talented & Kind-Hearted Person! 🌟</p>
+            </div>
+
+            <div class="glass-card roast-engine-box no-tilt">
+                <!-- Verified Personality Highlights Banner -->
+                <div class="stats-grid-mini" style="margin-bottom: 24px;">
+                    <div class="stat-item-mini" style="border-color: var(--neon-purple); background: rgba(168, 85, 247, 0.15);">
+                        <label>OFFICIAL VERDICT</label>
+                        <span style="font-size: 1.1rem; color: #fff;">MULTI-TALENTED 🌟</span>
+                    </div>
+                    <div class="stat-item-mini" style="border-color: var(--neon-pink); background: rgba(236, 72, 153, 0.15);">
+                        <label>HEART STATUS</label>
+                        <span style="font-size: 1.1rem; color: #fff;">KIND-HEARTED ❤️</span>
+                    </div>
+                    <div class="stat-item-mini" style="border-color: var(--cyan); background: rgba(6, 182, 212, 0.15);">
+                        <label>CREATIVE GENIUS</label>
+                        <span style="font-size: 1.1rem; color: #fff;">100% MAXIMUM 💡</span>
+                    </div>
+                    <div class="stat-item-mini" style="border-color: var(--yellow); background: rgba(234, 179, 8, 0.15);">
+                        <label>FRIENDSHIP BOND</label>
+                        <span style="font-size: 1.1rem; color: #fff;">LEGENDARY ∞ 🤝</span>
+                    </div>
+                </div>
+
+                <div class="roast-stats-container">
+                    <div class="roast-stat-row">
+                        <div class="roast-label-row"><span>MULTI-TALENTED MATRIX</span><span style="color: var(--neon-purple);">100%</span></div>
+                        <div class="roast-bar-bg"><div class="roast-bar-fill" data-percent="100" style="background: var(--neon-purple); width: 100%;"></div></div>
+                    </div>
+                    <div class="roast-stat-row">
+                        <div class="roast-label-row"><span>KIND-HEARTED LEVEL</span><span style="color: var(--neon-pink);">100%</span></div>
+                        <div class="roast-bar-bg"><div class="roast-bar-fill" data-percent="100" style="background: var(--neon-pink); width: 100%;"></div></div>
+                    </div>
+                    <div class="roast-stat-row">
+                        <div class="roast-label-row"><span>CREATIVE CHAOS</span><span style="color: var(--cyan);">94%</span></div>
+                        <div class="roast-bar-bg"><div class="roast-bar-fill" data-percent="94" style="background: var(--cyan); width: 94%;"></div></div>
+                    </div>
+                    <div class="roast-stat-row">
+                        <div class="roast-label-row"><span>FOOD & SNACK APPETITE</span><span style="color: var(--orange);">100%</span></div>
+                        <div class="roast-bar-bg"><div class="roast-bar-fill" data-percent="100" style="background: var(--orange); width: 100%;"></div></div>
+                    </div>
+                    <div class="roast-stat-row">
+                        <div class="roast-label-row"><span>SLEEP SCHEDULE</span><span style="color: var(--yellow);">28%</span></div>
+                        <div class="roast-bar-bg"><div class="roast-bar-fill" data-percent="28" style="background: var(--yellow); width: 28%;"></div></div>
+                    </div>
+                    <div class="roast-stat-row">
+                        <div class="roast-label-row"><span>GOOD VIBES SQUAD SCORE</span><span style="color: var(--neon-pink);">∞</span></div>
+                        <div class="roast-bar-bg"><div class="roast-bar-fill" data-percent="100" style="background: var(--neon-pink); width: 100%;"></div></div>
+                    </div>
+                </div>
+
+                <div id="roast-cards-grid" class="roast-cards-grid">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div style="text-align: center; margin-top: 32px;">
+                    <button id="rescan-roast-btn" class="primary-btn">
+                        RE-RUN PERSONALITY DIAGNOSTIC 🤖
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 05: MEMORY LANE PHOTO GALLERY -->
+        <section id="scene-05" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 05 — MEMORIES</span>
+                <h2 class="scene-title gradient-text-purple-pink">Memory Lane 📸</h2>
+                <p class="scene-subtitle">Click any polaroid card to view full screen moments!</p>
+            </div>
+
+            <div id="gallery-grid" class="gallery-grid-container">
+                <!-- Populated dynamically -->
+            </div>
+        </section>
+
+        <!-- SCENE 06: PERSONAL VIDEO EXPERIENCE -->
+        <section id="scene-06" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 06 — VIDEO CINEMA</span>
+                <h2 class="scene-title gradient-text-cyan-blue">Some Memories Are Better Moving 🎬</h2>
+                <p class="scene-subtitle">Press play to watch a special video message.</p>
+            </div>
+
+            <div class="video-player-card">
+                <div id="video-wrapper" class="video-wrapper">
+                    <video id="birthday-video-element" poster="" preload="metadata">
+                        <source src="assets/videos/birthday-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-custom-controls">
+                        <button id="video-custom-play" class="icon-btn"><span>▶</span></button>
+                        <div class="video-progress-bar"><div id="video-progress-fill" class="video-progress-fill"></div></div>
+                        <button id="video-custom-mute" class="icon-btn">🔊</button>
+                        <button id="video-custom-fullscreen" class="icon-btn">⛶</button>
+                    </div>
+                </div>
+
+                <div id="video-placeholder-card" class="video-placeholder-panel">
+                    <span>🎬</span>
+                    <h3 class="gradient-text-purple-pink" style="font-size: 1.8rem; margin-bottom: 8px;">YOUR VIDEO MESSAGE GOES HERE</h3>
+                    <p style="color: var(--text-muted); max-width: 450px;">Place your <code>birthday-video.mp4</code> file in <code>assets/videos/</code> or manage video settings in Admin Control Center!</p>
+                </div>
+            </div>
+
+            <div id="video-gallery-grid" class="video-gallery-grid" aria-label="Birthday memory videos"></div>
+
+            <div id="video-lightbox" class="video-lightbox" aria-hidden="true">
+                <div class="video-lightbox-panel">
+                    <button id="video-lightbox-close" class="lightbox-close-btn" aria-label="Close video">&times;</button>
+                    <video id="video-lightbox-player" controls playsinline></video>
+                    <h3 id="video-lightbox-title" class="video-lightbox-title"></h3>
+                </div>
+            </div>
+
+            <div id="video-ended-msg" class="video-ended-msg">
+                <p class="neon-text-gold">Okay... now we get serious. scroll down for one last letter ❤️</p>
+            </div>
+        </section>
+
+        <!-- SCENE 07: THE DIGITAL LETTER -->
+        <section id="scene-07" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 07 — HEARTFELT MESSAGE</span>
+                <h2 class="scene-title gradient-text-purple-pink">One Last Message... ✉️</h2>
+                <p class="scene-subtitle">Click the envelope to unseal the letter.</p>
+            </div>
+
+            <div class="envelope-scene-wrapper">
+                <div id="envelope-container" class="envelope-3d">
+                    <div class="envelope-seal">💌</div>
+                    <div style="text-align: center;">
+                        <h3 id="letter-to-name" class="dynamic-name" style="color: #fff; font-size: 1.4rem;">TO: NAGA BHUSHAN</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">CONFIDENTIAL & PERSONAL</p>
+                    </div>
+                </div>
+
+                <div id="letter-paper" class="letter-paper-content">
+                    <h3 id="letter-salutation-text" class="letter-salutation">Dear Naga Bhushan,</h3>
+                    <div id="letter-body-text" class="letter-body"></div>
+                    <div id="letter-closing-text" class="letter-closing">— Your Friend</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 08: INTERACTIVE BIRTHDAY CAKE -->
+        <section id="scene-08" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 08 — MAKE A WISH</span>
+                <h2 class="scene-title gradient-text-gold">Make a Wish ✨</h2>
+                <p class="scene-subtitle">Tap or blow into your microphone to extinguish the candles!</p>
+            </div>
+
+            <div class="cake-container">
+                <div id="candles-row" class="candles-row">
+                    <!-- Populated dynamically -->
+                </div>
+                <div class="cake-layer layer-top"></div>
+                <div class="cake-layer layer-middle"></div>
+                <div class="cake-layer layer-bottom"></div>
+                <div class="cake-plate"></div>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <button id="blow-candles-btn" class="primary-btn">
+                    BLOW THE CANDLES 🎂
+                </button>
+            </div>
+
+            <div id="cake-wish-msg" class="cake-wish-message"></div>
+        </section>
+
+        <!-- SCENE 10: BIRTHDAY WISH WALL -->
+        <section id="scene-10" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 10 — WISH WALL</span>
+                <h2 class="scene-title gradient-text-cyan-blue">Messages From The Squad 💬</h2>
+                <p class="scene-subtitle">Warm wishes, hilarious reminders, and endless good vibes.</p>
+            </div>
+
+            <div id="wish-wall-grid" class="wish-wall-grid">
+                <!-- Populated dynamically -->
+            </div>
+        </section>
+
+        <!-- SCENE 11: MINI GAMES -->
+        <section id="scene-11" class="experience-scene">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 11 — BIRTHDAY ARCADE</span>
+                <h2 class="scene-title gradient-text-gold">Mini Games 🎮</h2>
+                <p class="scene-subtitle">Test your skills to unlock ultimate birthday glory!</p>
+            </div>
+
+            <div class="games-container">
+                <!-- GAME 1 -->
+                <div class="glass-card game-box">
+                    <h3 class="gradient-text-purple-pink" style="font-size: 1.4rem;">Catch the Balloons 🎈</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Score: <span id="balloon-score" style="color: var(--neon-pink); font-weight: 700;">0</span> / 10</p>
+                    
+                    <div id="balloon-game-area"></div>
+                    
+                    <button id="start-balloon-game-btn" class="primary-btn" style="padding: 10px 24px; font-size: 0.95rem;">
+                        START GAME 🎈
+                    </button>
+                    <p id="game1-win-msg" style="display: none; color: var(--cyan); margin-top: 10px; font-weight: 700;">YOU WIN! CELEBRATION UNLOCKED! 🎉</p>
+                </div>
+
+                <!-- GAME 2 -->
+                <div class="glass-card game-box">
+                    <h3 class="gradient-text-cyan-blue" style="font-size: 1.4rem;">Find the Secret Gift 🎁</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Pick 1 of 4 mystery boxes!</p>
+                    
+                    <div id="secret-boxes-grid" class="secret-boxes-grid"></div>
+
+                    <div id="game2-result" style="margin-top: 12px; font-weight: 700;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 12: GRAND FINALE -->
+        <section id="scene-12" class="experience-scene scene-finale">
+            <div class="scene-heading-container">
+                <span class="scene-tag">SCENE 12 — THE FINALE</span>
+                <p class="scene-subtitle" style="font-size: 1.4rem;"><span class="dynamic-name">NAGA BHUSHAN</span>...</p>
+                <h2 class="scene-title gradient-text-gold">THIS ONE IS FOR YOU.</h2>
+            </div>
+
+            <h1 id="finale-name" class="finale-title gradient-text-purple-pink neon-text-pink">
+                HAPPY BIRTHDAY<br>NAGA BHUSHAN 🎉
+            </h1>
+
+            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 24px auto;">
+                Another year. Another chapter. Another collection of epic memories waiting to happen. Keep being awesome!
+            </p>
+
+            <div class="action-buttons-row">
+                <button id="replay-exp-btn" class="primary-btn">REPLAY EXPERIENCE 🔄</button>
+                <a href="#scene-05" class="secondary-btn">VIEW MEMORIES 📸</a>
+                <button id="share-exp-btn" class="secondary-btn">SHARE SURPRISE 🔗</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Share Toast -->
+    <div id="share-toast" class="share-toast">Surprise website link copied to clipboard! 📋</div>
+
+    <!-- Chaos Surprise Popup -->
+    <div id="chaos-popup" class="chaos-popup" aria-hidden="true">
+        <div class="chaos-popup-card">
+            <button id="chaos-popup-close" class="chaos-popup-close" aria-label="Close popup">&times;</button>
+            <img src="assets/photos/birthday-cake.jpeg" alt="Birthday cake surprise" />
+            <h3>CHAOS MODE ACTIVATED 🎂</h3>
+            <p>The birthday energy has officially reached maximum level. Enjoy the surprise and let the celebrations begin!</p>
+            <button id="chaos-popup-ok" class="primary-btn">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- Gift Reveal Popup -->
+    <div id="gift-popup" class="chaos-popup" aria-hidden="true">
+        <div class="chaos-popup-card">
+            <button id="gift-popup-close" class="chaos-popup-close" aria-label="Close popup">&times;</button>
+            <img src="assets/photos/gift-photo.jpg" alt="Gift reveal photo" />
+            <h3>YOUR SURPRISE IS HERE 🎁</h3>
+            <p>Happy birthday! This moment is just for you. Keep smiling and keep shining.</p>
+            <button id="gift-popup-ok" class="primary-btn">CLOSE</button>
+        </div>
+    </div>
+
+    <script>
+        const chaosBtn = document.getElementById("enter-chaos-btn");
+        const chaosPopup = document.getElementById("chaos-popup");
+        const chaosCloseBtn = document.getElementById("chaos-popup-close");
+        const chaosOkBtn = document.getElementById("chaos-popup-ok");
+
+        const giftBtn = document.getElementById("open-gift-btn");
+        const giftPopup = document.getElementById("gift-popup");
+        const giftCloseBtn = document.getElementById("gift-popup-close");
+        const giftOkBtn = document.getElementById("gift-popup-ok");
+
+        function openChaosPopup() {
+            if (chaosPopup) {
+                chaosPopup.classList.add("active");
+                chaosPopup.setAttribute("aria-hidden", "false");
+            }
+        }
+
+        function closeChaosPopup() {
+            if (chaosPopup) {
+                chaosPopup.classList.remove("active");
+                chaosPopup.setAttribute("aria-hidden", "true");
+            }
+        }
+
+        function openGiftPopup() {
+            if (giftPopup) {
+                giftPopup.classList.add("active");
+                giftPopup.setAttribute("aria-hidden", "false");
+            }
+        }
+
+        function closeGiftPopup() {
+            if (giftPopup) {
+                giftPopup.classList.remove("active");
+                giftPopup.setAttribute("aria-hidden", "true");
+            }
+        }
+
+        if (chaosBtn) {
+            chaosBtn.addEventListener("click", function () {
+                openChaosPopup();
+            });
+        }
+
+        if (chaosCloseBtn) {
+            chaosCloseBtn.addEventListener("click", closeChaosPopup);
+        }
+
+        if (chaosOkBtn) {
+            chaosOkBtn.addEventListener("click", closeChaosPopup);
+        }
+
+        if (giftBtn) {
+            giftBtn.addEventListener("click", function () {
+                openGiftPopup();
+            });
+        }
+
+        if (giftCloseBtn) {
+            giftCloseBtn.addEventListener("click", closeGiftPopup);
+        }
+
+        if (giftOkBtn) {
+            giftOkBtn.addEventListener("click", closeGiftPopup);
+        }
+
+        if (chaosPopup) {
+            chaosPopup.addEventListener("click", function (event) {
+                if (event.target === chaosPopup) {
+                    closeChaosPopup();
+                }
+            });
+        }
+
+        if (giftPopup) {
+            giftPopup.addEventListener("click", function (event) {
+                if (event.target === giftPopup) {
+                    closeGiftPopup();
+                }
+            });
+        }
+    </script>
+
+    <!-- Handwritten Letter Popup -->
+    <div id="letter-popup" class="letter-popup" aria-hidden="true">
+        <div class="letter-popup-panel">
+            <button id="letter-popup-close" class="chaos-popup-close" aria-label="Close letter">&times;</button>
+            <div class="letter-popup-envelope-top"></div>
+            <div class="letter-popup-paper">
+                <div class="letter-popup-content">
+                    <p class="letter-popup-salutation">Dear Naga Bhushan,</p>
+                    <p>Today is not just about another year being added to your life. It's about all the memories, laughs, stupid conversations, random plans, unforgettable moments and everything still waiting to happen.</p>
+                    <p>Some friendships are impossible to explain. You just know they're special. Thank you for being the person you are. Keep laughing. Keep dreaming. Keep doing crazy things. And most importantly... never stop being Naga Bhushan. Happy Birthday! ❤️</p>
+                    <p>Here's to another year of adventures, memories and absolute chaos. — Your Friend</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close memory">&times;</button>
+        <button id="lightbox-prev" class="lightbox-nav-btn prev" aria-label="Previous memory">&#10094;</button>
+        <button id="lightbox-next" class="lightbox-nav-btn next" aria-label="Next memory">&#10095;</button>
+        <div class="lightbox-content">
+            <div class="lightbox-img-wrapper">
+                <img id="lightbox-img" src="" alt="Memory Lane Image">
+            </div>
+            <p id="lightbox-caption" class="lightbox-caption-text"></p>
+        </div>
+    </div>
+
+    <!-- Easter Egg Modal -->
+    <div id="easter-egg-modal" class="easter-egg-modal">
+        <div class="glass-card" style="max-width: 500px; text-align: center;">
+            <h2 class="neon-text-gold" style="font-size: 2rem; margin-bottom: 12px;">SECRET NAGA MODE 🤫</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">You unlocked the hidden vault! Naga Bhushan has officially been granted 100,000 aura points and lifetime unlimited birthday cake privileges! 🎂⚡</p>
+            <button id="easter-egg-close" class="primary-btn">CLOSE SECRET VAULT 🚀</button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         4-DIGIT PIN ADMIN LOGIN MODAL ("PRIVATE AREA")
+         ========================================================================== -->
+    <div id="admin-pin-modal" class="admin-modal-overlay">
+        <div id="admin-pin-card" class="admin-pin-card">
+            <div style="font-size: 2.8rem; margin-bottom: 6px;">🔒</div>
+            <h2 class="gradient-text-purple-pink" style="font-size: 1.6rem;">PRIVATE AREA</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">Birthday Experience Control Center</p>
+            <p style="color: var(--cyan); font-weight: 700; font-size: 0.8rem; margin-top: 8px;">Enter 4-digit PIN</p>
+            
+            <div class="pin-inputs-container">
+                <input type="password" class="pin-digit-input" maxlength="1" inputmode="numeric">
+                <input type="password" class="pin-digit-input" maxlength="1" inputmode="numeric">
+                <input type="password" class="pin-digit-input" maxlength="1" inputmode="numeric">
+                <input type="password" class="pin-digit-input" maxlength="1" inputmode="numeric">
+            </div>
+
+            <div class="pin-keypad-grid">
+                <button class="pin-key-btn" data-val="1">1</button>
+                <button class="pin-key-btn" data-val="2">2</button>
+                <button class="pin-key-btn" data-val="3">3</button>
+                <button class="pin-key-btn" data-val="4">4</button>
+                <button class="pin-key-btn" data-val="5">5</button>
+                <button class="pin-key-btn" data-val="6">6</button>
+                <button class="pin-key-btn" data-val="7">7</button>
+                <button class="pin-key-btn" data-val="8">8</button>
+                <button class="pin-key-btn" data-val="9">9</button>
+                <button class="pin-key-btn" data-val="clear" style="font-size: 0.9rem;">CLR</button>
+                <button class="pin-key-btn" data-val="0">0</button>
+                <button id="admin-pin-cancel" class="pin-key-btn" style="font-size: 1.1rem;">✕</button>
+            </div>
+            
+            <p id="pin-error-msg" style="font-size: 0.85rem; margin-top: 16px; min-height: 20px; font-weight: 700;"></p>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         SAAS-STYLE ADMIN CONTROL CENTER DASHBOARD MODAL
+         ========================================================================== -->
+    <div id="admin-dashboard-modal" class="admin-modal-overlay">
+        <div class="admin-dashboard-layout">
+            
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-sidebar-header">
+                    <h3 class="gradient-text-purple-pink" style="font-size: 1.15rem;">BIRTHDAY CMS</h3>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">Control Center v2.0</p>
+                </div>
+                
+                <nav id="admin-sidebar-nav" class="admin-sidebar-nav">
+                    <button class="admin-nav-item active" data-tab="tab-overview" onclick="window.adminDashboard.switchTab('tab-overview')">🏠 Overview</button>
+                    <button class="admin-nav-item" data-tab="tab-profile" onclick="window.adminDashboard.switchTab('tab-profile')">👤 Birthday Profile</button>
+                    <button class="admin-nav-item" data-tab="tab-memories" onclick="window.adminDashboard.switchTab('tab-memories')">📸 Memories</button>
+                    <button class="admin-nav-item" data-tab="tab-videos" onclick="window.adminDashboard.switchTab('tab-videos')">🎬 Videos</button>
+                    <button class="admin-nav-item" data-tab="tab-wishes" onclick="window.adminDashboard.switchTab('tab-wishes')">💌 Wishes</button>
+                    <button class="admin-nav-item" data-tab="tab-cake" onclick="window.adminDashboard.switchTab('tab-cake')">🎂 Cake & Gift Photo</button>
+                    <button class="admin-nav-item" data-tab="tab-music" onclick="window.adminDashboard.switchTab('tab-music')">🎵 Music & Sounds</button>
+                    <button class="admin-nav-item" data-tab="tab-celebrations" onclick="window.adminDashboard.switchTab('tab-celebrations')">🎉 Celebrations</button>
+                    <button class="admin-nav-item" data-tab="tab-theme" onclick="window.adminDashboard.switchTab('tab-theme')">✨ Theme & Effects</button>
+                    <button class="admin-nav-item" data-tab="tab-nav" onclick="window.adminDashboard.switchTab('tab-nav')">⚙️ Navigation Settings</button>
+                    <button class="admin-nav-item" data-tab="tab-security" onclick="window.adminDashboard.switchTab('tab-security')">🔐 Security & Export</button>
+                </nav>
+            </aside>
+
+            <!-- Main Body -->
+            <main class="admin-main-body">
+                <header class="admin-top-toolbar">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="status-badge-live">🟢 LIVE</span>
+                        <div id="unsaved-badge" class="unsaved-changes-bar">⚠️ UNSAVED CHANGES</div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px;">
+                        <button id="admin-preview-btn" class="primary-btn" style="padding: 8px 18px; font-size: 0.85rem; margin-top: 0;">Preview Experience 👁️</button>
+                        <button id="admin-save-all-btn" class="secondary-btn" style="padding: 8px 16px; font-size: 0.85rem;">Save Changes 💾</button>
+                        <button id="admin-reset-all-btn" class="secondary-btn" style="padding: 8px 16px; font-size: 0.85rem;">Reset 🔄</button>
+                        <button id="admin-logout-btn" class="danger-btn" style="padding: 8px 16px; font-size: 0.85rem;">Logout 🔒</button>
+                        <button id="admin-dash-close" class="lightbox-close-btn" style="position: static; width: 36px; height: 36px; font-size: 1.1rem;">&times;</button>
+                    </div>
+                </header>
+
+                <div id="admin-content-pane" class="admin-content-pane">
+                    <!-- Dynamic pane content rendered by admin-dashboard.js -->
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Platform Files -->
+    <script src="js/config.js"></script>
+    <script src="js/data-service.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/confetti.js"></script>
+    <script src="js/fireworks.js"></script>
+    <script src="js/audio-manager.js"></script>
+    <script src="js/theme-manager.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/birthday.js"></script>
+    <script src="js/memory-manager.js"></script>
+    <script src="js/wish-manager.js"></script>
+    <script src="js/video-manager.js"></script>
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
